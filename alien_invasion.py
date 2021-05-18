@@ -1,14 +1,18 @@
 import sys
 import pygame
 from settings import Settings
+from ship import Ship
 
 def run_game():
     #start game and create a window
     pygame.init()
-    settings = Settings()
-    screen = pygame.display.set_mode((settings.screen_width,settings.screen_height))
+    setting = Settings()
+    screen = pygame.display.set_mode((setting.screen_width,setting.screen_height))
     pygame.display.set_caption("Alien Invasion")
 
+    #Make a ship
+    iship = Ship(screen)
+    
     #set background color
     bg_color = (230,230,230)
 
@@ -21,8 +25,8 @@ def run_game():
                 sys.exit()
         
         #redraw screen
-        screen.fill(settings.bg_color)
-       
+        screen.fill(setting.bg_color)
+        iship.blitme()
        #make the most recently drawn screen visible.
         pygame.display.flip()
 
